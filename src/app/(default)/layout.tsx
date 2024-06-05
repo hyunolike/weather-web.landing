@@ -1,3 +1,5 @@
+import { Providers } from "../_providers/providers";
+
 export default function RootLayout({
   children,
   landingModal,
@@ -9,9 +11,9 @@ export default function RootLayout({
             루트 레이아웃 (default)
           </div>
           <div>
-            {children}
-            {landingModal}
-            {commingSoonModal}
+              {children}
+              {landingModal}
+              {commingSoonModal}
           </div>
         </>
   );
