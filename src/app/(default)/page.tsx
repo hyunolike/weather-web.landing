@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import Modal from "./_component/Modal";
 
 export default function Home() {
   return (
@@ -14,6 +15,8 @@ export default function Home() {
         <Link href="/comming-soon">
           comming soon ~
         </Link>
+        <br />
+        <Modal />
       </div>
     </div>
   );
