@@ -9,9 +9,6 @@ export default function RootLayout({
   return (
       <RootLayoutComponent>
         <div>
-          루트 레이아웃 (default)
-        </div>
-        <div>
           {children}
           {landingModal}
           {commingSoonModal}
