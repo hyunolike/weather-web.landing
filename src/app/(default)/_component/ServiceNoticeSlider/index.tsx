@@ -1,14 +1,14 @@
-"use client";
+'use client'
 
 import { Swiper, SwiperSlide } from 'swiper/react'
 import styles from './ServiceNoticeSlider.module.scss'
 
 // Import Swiper styles
-import 'swiper/css';
-import 'swiper/css/pagination';
-import 'swiper/css/navigation';
+import 'swiper/css'
+import 'swiper/css/pagination'
+import 'swiper/css/navigation'
 
-import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+import { Autoplay, Pagination, Navigation } from 'swiper/modules'
 
 export default function ServiceNoticeSlider() {
   return (

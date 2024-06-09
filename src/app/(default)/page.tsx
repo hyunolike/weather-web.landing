@@ -1,6 +1,6 @@
-import MainTitle from "./_component/MainTitle";
-import ServiceInfo from "./_component/ServiceInfo";
-import DeveloperInfo from "./_component/DeveloperInfo";
+import MainTitle from './_component/MainTitle'
+import ServiceInfo from './_component/ServiceInfo'
+import DeveloperInfo from './_component/DeveloperInfo'
 
 export default function Home(): JSX.Element {
   return (
@@ -9,5 +9,5 @@ export default function Home(): JSX.Element {
       <ServiceInfo />
       <DeveloperInfo />
     </div>
-  );
+  )
 }
