@@ -22,8 +22,12 @@ export default function ServiceNoticeSlider() {
         }}
         modules={[Autoplay, Pagination, Navigation]}
       >
-        <SwiperSlide className={styles.slider}>새로운 차원의 경험 오직 날씨의속삭임🌤️에서만</SwiperSlide>
-        <SwiperSlide className={styles.slider}>24년 07월 서비스 오픈 예정 🚀</SwiperSlide>
+        <SwiperSlide className={styles.slider}>
+          새로운 차원의 경험 오직 날씨의속삭임🌤️에서만
+        </SwiperSlide>
+        <SwiperSlide className={styles.slider}>
+          24년 07월 서비스 오픈 예정 🚀
+        </SwiperSlide>
       </Swiper>
     </div>
   )
