@@ -1,4 +1,4 @@
-import styles from './DeveloperInfo.module.scss';
+import styles from './DeveloperInfo.module.scss'
 
 export default function DeveloperInfo() {
   return (
@@ -8,5 +8,5 @@ export default function DeveloperInfo() {
         <div>Copyright ⓒ 2024 장현호. All Rights Reserved</div>
       </div>
     </>
-  );
+  )
 }

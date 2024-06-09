@@ -1,4 +1,4 @@
-import {Card, CardHeader, CardBody, Image} from "@nextui-org/react";
+import { Card, CardHeader, CardBody, Image } from '@nextui-org/react'
 
 export default function Landing() {
   return (
@@ -19,5 +19,5 @@ export default function Landing() {
         </CardBody>
       </Card>
     </>
-  );
+  )
 }
