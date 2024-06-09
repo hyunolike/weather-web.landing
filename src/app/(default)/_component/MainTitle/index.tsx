@@ -39,12 +39,15 @@ export default function MainTitle(): JSX.Element {
 
   return (
         <div className={styles.main}>
-          <div >
+          <div className={styles.title}>
             날씨의 속삭임 🌤️
           </div>
           <div>
-            <div>날씨의 속삭임 구성원들과</div>
-            <div className={"typing-info"}></div>
+            <div className={styles.subtitle}>날씨의 속삭임 구성원들과</div>
+            <div className={styles.description}>
+              <div className={'typing-info'}></div>
+            </div>
+
           </div>
         </div>
   )
