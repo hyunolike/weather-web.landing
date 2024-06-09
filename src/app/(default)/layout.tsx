@@ -1,4 +1,5 @@
 import { Providers } from "../_providers/providers";
+import RootLayoutComponent from "./_component/RootLayoutComponent";
 
 export default function RootLayout({
   children,
@@ -6,15 +7,12 @@ export default function RootLayout({
   commingSoonModal,
 }: {children: React.ReactNode, landingModal: React.ReactNode, commingSoonModal: React.ReactNode}) {
   return (
-        <>
-          <div>
-            루트 레이아웃 (default)
-          </div>
-          <div>
-              {children}
-              {landingModal}
-              {commingSoonModal}
-          </div>
-        </>
+      <RootLayoutComponent>
+        <div>
+          {children}
+          {landingModal}
+          {commingSoonModal}
+        </div>
+      </RootLayoutComponent>
   );
 }
