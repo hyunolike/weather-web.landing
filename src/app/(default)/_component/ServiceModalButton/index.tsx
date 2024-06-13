@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link'
 import styles from './ServiceModalButton.module.scss'
 import { Badge, Button, Tooltip } from '@nextui-org/react'
 
@@ -9,6 +10,7 @@ interface ServiceModalButtonProps {
   isBadge?: boolean
   title?: string
   content?: string
+  url: string
 }
 
 export default function ServiceModalButton({
@@ -17,6 +19,7 @@ export default function ServiceModalButton({
   isBadge,
   title,
   content,
+  url,
 }: ServiceModalButtonProps): JSX.Element {
   const buttonStyle = isDisabled ? styles.disabled : styles.main
 
@@ -41,7 +44,7 @@ export default function ServiceModalButton({
               size="lg"
               isDisabled={isDisabled}
             >
-              {serviceName}
+              <Link href={url}>{serviceName}</Link>
             </Button>
           </Tooltip>
         </Badge>
@@ -63,7 +66,7 @@ export default function ServiceModalButton({
             size="lg"
             isDisabled={isDisabled}
           >
-            {serviceName}
+            <Link href={url}>{serviceName}</Link>
           </Button>
         </Tooltip>
       )}

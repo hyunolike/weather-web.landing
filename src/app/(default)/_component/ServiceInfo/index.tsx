@@ -15,6 +15,7 @@ export default function ServiceInfo(): JSX.Element {
           serviceName="날씨의속삭임 체험하기 (비회원)"
           isDisabled={true}
           isBadge={false}
+          url="/flow/trial-user"
         />
         <br />
         <br />
@@ -25,6 +26,7 @@ export default function ServiceInfo(): JSX.Element {
           isBadge={true}
           title={title}
           content={serviceInfoContent}
+          url="/flow/full-member"
         />
       </div>
     </div>
