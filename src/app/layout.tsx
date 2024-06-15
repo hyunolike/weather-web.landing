@@ -6,8 +6,9 @@ import RootLayoutComponent from './_components/RootLayoutComponent'
 export const metadata: Metadata = {
   title: '날씨의 속삭임',
   description: '-',
-  viewport: 'width=device-width, initial-scale=1',
 }
+
+export const viewport = 'width=device-width, initial-scale=1'
 
 export default function RootLayout({
   children,

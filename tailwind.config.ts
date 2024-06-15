@@ -16,6 +16,10 @@ const config: Config = {
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
+      fontFamily: {
+        'laundry-regular': ['LaundryGothic-Regular', 'sans-serif'],
+        'laundry-bold': ['LaundryGothic-Bold', 'sans-serif'],
+      },
     },
   },
   darkMode: 'class',

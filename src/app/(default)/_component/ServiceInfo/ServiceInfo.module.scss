@@ -1,5 +1,5 @@
 .main {
-  font-family: 'LaundryGothic-Regular';
+  @apply font-laundry-regular;
   @apply w-full h-3/6;
   @apply relative;
   @apply px-4 pt-10;
