@@ -2,7 +2,7 @@ import type { Metadata } from 'next'
 import './globals.css'
 import { Providers } from './_providers/providers'
 import RootLayoutComponent from './_components/RootLayoutComponent'
-import { MSWComponent } from './_components/MSWComponent'
+import { MSWComponent } from '@/app/_components/MSWComponent'
 
 export const metadata: Metadata = {
   title: '날씨의 속삭임',
