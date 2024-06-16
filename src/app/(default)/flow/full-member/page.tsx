@@ -1,7 +1,7 @@
-export default function Landing() {
+export default function FullMember() {
   return (
     <div className="flex min-h-screen flex-col items-center justify-between p-24">
-      <div>렌딩 팝업</div>
+      <div>정회원 팝업</div>
     </div>
   )
 }
