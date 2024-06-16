@@ -1,11 +1,29 @@
-"use client"
+'use client'
 
 import styles from './Modal.module.scss'
 import Image from 'next/image'
+import {
+  Button,
+  Card,
+  CardBody,
+  CardFooter,
+  CardHeader,
+  Divider,
+  Input,
+  Link,
+} from '@nextui-org/react'
+import { MdMail } from 'react-icons/md'
 
-export default function Modal(){
+export default function Modal() {
+  // 모달 배경 클릭 시 메인으로 리다이렉트
+  const handleBackgroundClick = (event: React.MouseEvent<HTMLDivElement>) => {
+    if (event.target === event.currentTarget) {
+      window.location.href = '/'
+    }
+  }
+
   return (
-    <div className={styles.modalBackgroud}>
+    <div className={styles.modalBackgroud} onClick={handleBackgroundClick}>
       <div className={styles.modal}>
         <div className={styles.modalContent}>
           <div>
@@ -19,13 +37,41 @@ export default function Modal(){
           </div>
         </div>
         <div className={styles.modalServiceSection}>
-          <div className={styles.modalServiceInfo}>현재 대기인원은 00명 입니다. 🧑🏻‍💻 새로운 차원의 경험 오직 날씨의 속삭임에서만</div>
+          <div className={styles.modalServiceInfo}>
+            현재 대기인원은 00명 입니다. 🧑🏻‍💻 새로운 차원의 경험 오직 날씨의
+            속삭임에서만
+          </div>
         </div>
         <div>
-          이메일 알림 포맷
-        </div>
-        <div>
-          날씨의 속삭임 입장하기 알아보기
+          <div className={styles.modalEmailSection}>
+            <div className={styles.modalEmailForm}>
+              <Input
+                type="email"
+                label="이메일"
+                placeholder="you@example.com"
+                labelPlacement="outside"
+                startContent={
+                  <MdMail className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
+                }
+                isClearable
+              />
+            </div>
+            <div className={styles.modalEmailBtnSection}>
+              <Button className={styles.modalEmailButton}>입장하기</Button>
+            </div>
+          </div>
+          <div className={styles.modalFullM}>
+            <Card>
+              <CardHeader className={styles.modalFullMInfo}>
+                <Link isExternal showAnchorIcon href="/">
+                  날씨의 속삭임 입장하기 알아보기
+                </Link>
+              </CardHeader>
+              <CardFooter className={styles.modalInfo}>
+                <p>입장하기 프로세스에 대해 알려드리고 있어요!</p>
+              </CardFooter>
+            </Card>
+          </div>
         </div>
       </div>
     </div>

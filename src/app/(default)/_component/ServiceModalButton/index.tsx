@@ -51,7 +51,7 @@ export default function ServiceModalButton({
       ) : (
         <Tooltip
           color={'warning'}
-          closeDelay={1000}
+          closeDelay={500}
           content={
             <div className="px-1 py-2">
               <div className="text-small font-bold">{title}</div>
