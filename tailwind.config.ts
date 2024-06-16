@@ -20,6 +20,15 @@ const config: Config = {
         'laundry-regular': ['LaundryGothic-Regular', 'sans-serif'],
         'laundry-bold': ['LaundryGothic-Bold', 'sans-serif'],
       },
+      keyframes: {
+        marquee: {
+          '0%': { transform: 'translateX(100%)' },
+          '100%': { transform: 'translateX(-80%)' },
+        },
+      },
+      animation: {
+        marquee: 'marquee 10s linear infinite',
+      },
     },
   },
   darkMode: 'class',

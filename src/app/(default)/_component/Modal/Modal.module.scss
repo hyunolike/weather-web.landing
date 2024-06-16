@@ -4,5 +4,30 @@
 }
 
 .modal {
-  @apply w-full max-w-[500px] h-full max-h-[600px] bg-white rounded-lg p-5 relative z-20;
+  @apply w-full max-[575px]:max-w-[80%] h-full max-[575px]:max-h-[50%] max-w-[400px] max-h-[500px] bg-white rounded-lg p-5 relative z-20;
+}
+
+.modalContent {
+  @apply flex flex-col items-center gap-2;
+}
+
+.modalTitle {
+  @apply font-laundry-bold text-lg;
+}
+
+.modalInfo {
+  @apply font-laundry-regular text-sm text-gray-500 text-center;
+}
+
+.modalServiceSection {
+  @apply relative w-full bg-black h-10 overflow-hidden;
+  @apply flex justify-center items-center;
+  @apply rounded-lg;
+}
+
+.modalServiceInfo {
+  @apply absolute;
+  @apply whitespace-nowrap;
+  @apply font-laundry-regular text-white px-2 py-1;
+  @apply animate-marquee
 }

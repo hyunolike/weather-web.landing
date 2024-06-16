@@ -9,7 +9,7 @@ export default function notFound() {
   }, [])
 
   return (
-    <div className="bg-black min-w-[576px]">
+    <div className="bg-black min-[576px]:min-w-[576px]">
       <div className="flex min-h-screen flex-col items-center justify-between p-24">
         <div className="text-white font-laundry-regular">
           페이지를 찾을 수 없습니다.
