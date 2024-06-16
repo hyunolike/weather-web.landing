@@ -1,11 +1,14 @@
 'use client'
 
+import { useRouter } from 'next/navigation'
 import { useEffect } from 'react'
 
-export default function notFound() {
+export default function NotFound() {
+  const router = useRouter()
+
   // 404 페이지 진입 시 메인으로 리다이렉트
   useEffect(() => {
-    window.location.href = '/'
+    router.back()
   }, [])
 
   return (
