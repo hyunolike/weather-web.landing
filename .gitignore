@@ -1,3 +1,6 @@
+# 스토리북 빌드 결과물을 무시합니다.
+storybook-static
+
 # 환경 설정 파일을 무시합니다.
 .env
 
@@ -40,3 +43,5 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+*storybook.log

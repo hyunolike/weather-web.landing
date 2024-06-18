@@ -19,7 +19,7 @@ import {
 import { MdMail } from 'react-icons/md'
 import { GoAlertFill } from 'react-icons/go'
 import { useActionState, useState } from 'react'
-import onSubmit from '../../_lib/signup'
+import onSubmit from '@/app/(default)/_lib/signup'
 import { useFormStatus } from 'react-dom'
 import { useRouter } from 'next/navigation'
 
