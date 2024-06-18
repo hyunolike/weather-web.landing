@@ -4,6 +4,7 @@ import '@/app/globals.css' // Import global styles (NextUI 적용 필수값)
 import './style.scss'
 
 const preview: Preview = {
+  tags: ['autodocs'],
   parameters: {
     controls: {
       matchers: {
