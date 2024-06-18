@@ -4,11 +4,10 @@
 
 ## 기술스택
 
-<!-- 
+<!--
 <img width="841" alt="image" src="https://github.com/hyunolike/weather-web.landing/assets/61215550/aa4856c8-ddc0-4623-b7ce-f5644d7e33a8">
 -->
 <img width="841" alt="image" src="https://github.com/hyunolike/weather-web.landing/assets/61215550/8810f120-8425-4ffb-bd72-594e11d99d1c">
-
 
 ## CI/CD
 
