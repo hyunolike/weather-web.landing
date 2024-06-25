@@ -1,0 +1,35 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("POSTGRES_PRISMA_URL") // uses connection pooling
+  directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
+}
+
+model SendList {
+  id         Int      @id @default(autoincrement())
+  email      String   @db.VarChar(255)
+  ip         String   @db.VarChar(45)
+  sentStatus Boolean  @default(false)
+  sendType   SendType
+}
+
+model SpamList {
+  id      Int     @id @default(autoincrement())
+  email   String  @db.VarChar(255)
+  ip      String  @db.VarChar(45)
+  blocked Boolean @default(true)
+}
+
+enum SendType {
+  member
+  non_member
+}
