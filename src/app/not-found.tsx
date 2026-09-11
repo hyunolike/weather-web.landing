@@ -7,9 +7,10 @@ export default function NotFound() {
   const router = useRouter()
 
   // 404 페이지 진입 시 메인으로 리다이렉트
+  // (router.back() 은 외부 유입 시 돌아갈 곳이 없거나 404 로 되돌아오는 문제가 있다)
   useEffect(() => {
-    router.back()
-  }, [])
+    router.replace('/')
+  }, [router])
 
   return (
     <div className="bg-black min-[576px]:min-w-[576px]">
