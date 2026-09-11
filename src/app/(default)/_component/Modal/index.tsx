@@ -7,7 +7,6 @@ import {
   Card,
   CardFooter,
   CardHeader,
-  Checkbox,
   Input,
   Link,
   Modal as NextModal,
@@ -19,65 +18,38 @@ import {
 } from '@nextui-org/react'
 import { MdMail } from 'react-icons/md'
 import { GoAlertFill } from 'react-icons/go'
-import { GoCheckCircleFill } from 'react-icons/go'
-import { useEffect, useState } from 'react'
-import { useFormState, useFormStatus } from 'react-dom'
-import { useRouter } from 'next/navigation'
+import { useActionState, useState } from 'react'
 import onSubmit from '@/app/(default)/_lib/signup'
-import { INITIAL_SIGNUP_STATE } from '@/types/signup'
+import { useFormStatus } from 'react-dom'
+import { useRouter } from 'next/navigation'
 
-type Props = {
-  // 정회원(member) / 체험유저(non_member) 구분해서 저장한다
-  sendType?: 'member' | 'non_member'
-}
-
-// useFormStatus 는 form 의 자식 컴포넌트에서만 제출 상태를 읽을 수 있다
-function SubmitButton() {
-  const { pending } = useFormStatus()
-
-  return (
-    <Button
-      type="submit"
-      className={styles.modalEmailButton}
-      isLoading={pending}
-      isDisabled={pending}
-    >
-      입장하기
-    </Button>
-  )
-}
-
-export default function Modal({ sendType = 'member' }: Props) {
+export default function Modal() {
   const router = useRouter()
 
-  // 신청 결과 안내 모달 상태값
+  // 모달 상태값 (입장하기 이후 동작 처리)
   const { isOpen, onOpen, onClose } = useDisclosure()
 
-  // server action 결과 상태값
-  const [state, formAction] = useFormState(onSubmit, INITIAL_SIGNUP_STATE)
+  const handleClose = () => {
+    router.back()
+  }
+
+  // useFormStatus
+  // useActionState
+  const initialState: { message: string } = {
+    message: '',
+  }
+
+  // 카나리 버전으로 불안정
+  // const [state, formAction] = useActionState(onSubmit, initialState);
+  // const {pending} = useFormStatus();
+
+  // server action
+  const submit = onSubmit
 
   // 이메일 상태값
   const [email, setEmail] = useState('')
   const onChangEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
     setEmail(e.target.value)
-  }
-
-  const isSuccess = state.status === 'success'
-
-  // 제출이 끝나면 결과 안내 모달을 띄운다
-  useEffect(() => {
-    if (state.status !== 'idle') {
-      onOpen()
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state])
-
-  const handleClose = () => {
-    onClose()
-    // 신청에 성공한 경우에만 메인으로 돌아간다
-    if (isSuccess) {
-      router.back()
-    }
   }
 
   // 모달 배경 클릭 시 메인으로 리다이렉트
@@ -109,38 +81,72 @@ export default function Modal({ sendType = 'member' }: Props) {
         </div>
         <div>
           {/* server action */}
-          <form action={formAction}>
-            <input type="hidden" name="sendType" value={sendType} />
-            <div className={styles.modalEmailSection}>
-              <div className={styles.modalEmailForm}>
-                <Input
-                  type="email"
-                  label="이메일"
-                  placeholder="you@example.com"
-                  labelPlacement="outside"
-                  name="email" //이 값을 이용해 데이터 처리 (server action)
-                  value={email}
-                  startContent={
-                    <MdMail className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
-                  }
-                  isClearable
-                  onChange={onChangEmail}
-                />
-              </div>
-              <div className={styles.modalEmailBtnSection}>
-                <SubmitButton />
-              </div>
+          <form className={styles.modalEmailSection} action={submit}>
+            <div className={styles.modalEmailForm}>
+              <Input
+                type="email"
+                label="이메일"
+                placeholder="you@example.com"
+                labelPlacement="outside"
+                name="email" //이 값을 이용해 데이터 처리 (server action)
+                value={email}
+                startContent={
+                  <MdMail className="text-2xl text-default-400 pointer-events-none flex-shrink-0" />
+                }
+                isClearable
+                onChange={onChangEmail}
+              />
             </div>
-            {/* 개인정보 수집 동의 (이메일, IP 를 저장하므로 필수) */}
-            <div className="font-laundry-regular pt-3">
-              <Checkbox name="privacyAgreement" size="sm">
-                <span className="text-tiny">
-                  개인정보 수집 및 이용에 동의합니다. (필수)
-                </span>
-              </Checkbox>
-              <p className="pl-6 text-tiny text-default-500">
-                수집 항목: 이메일, IP 주소 / 목적: 서비스 오픈 알림 발송
-              </p>
+            <div className={styles.modalEmailBtnSection}>
+              <Button
+                type="submit"
+                className={styles.modalEmailButton}
+                onPress={onOpen}
+              >
+                입장하기
+              </Button>
+              <NextModal backdrop="blur" isOpen={isOpen} onClose={onClose}>
+                <ModalContent className="font-laundry-regular flex justify-center items-center">
+                  {(onClose) => (
+                    <>
+                      <ModalHeader className="flex flex-col gap-1">
+                        <div className="flex justify-center text-amber-500">
+                          <GoAlertFill className="w-10 h-10" />
+                        </div>
+                        <div>날씨의속삭임 서비스 이용 사전 안내</div>
+                      </ModalHeader>
+                      <ModalBody>
+                        <p>
+                          안정적인 서비스 제공을 위해 입장하기 기능이
+                          제한됩니다.
+                          <br />
+                          서비스 출시 전까지는 가급적 이용을 삼가해 주시기
+                          바랍니다.
+                        </p>
+                        <br />
+                        안정적인 서비스 제공으로 보답하겠습니다. <br />
+                        감사합니다. :)
+                      </ModalBody>
+                      <ModalFooter>
+                        <Button
+                          color="danger"
+                          variant="light"
+                          onPress={onClose}
+                        >
+                          닫기
+                        </Button>
+                        <Button
+                          className="bg-black text-white"
+                          onPress={onClose}
+                          onClick={() => handleClose()}
+                        >
+                          확인
+                        </Button>
+                      </ModalFooter>
+                    </>
+                  )}
+                </ModalContent>
+              </NextModal>
             </div>
           </form>
           <div className={styles.modalFullM}>
@@ -156,47 +162,6 @@ export default function Modal({ sendType = 'member' }: Props) {
             </Card>
           </div>
         </div>
-
-        {/* 신청 결과 안내 */}
-        <NextModal backdrop="blur" isOpen={isOpen} onClose={handleClose}>
-          <ModalContent className="font-laundry-regular flex justify-center items-center">
-            <>
-              <ModalHeader className="flex flex-col gap-1">
-                <div
-                  className={`flex justify-center ${isSuccess ? 'text-green-500' : 'text-amber-500'}`}
-                >
-                  {isSuccess ? (
-                    <GoCheckCircleFill className="w-10 h-10" />
-                  ) : (
-                    <GoAlertFill className="w-10 h-10" />
-                  )}
-                </div>
-                <div>
-                  {isSuccess
-                    ? '날씨의속삭임 사전 신청 완료'
-                    : '안내 말씀드려요'}
-                </div>
-              </ModalHeader>
-              <ModalBody>
-                <p>{state.message}</p>
-                {isSuccess && (
-                  <p>
-                    안정적인 서비스 제공으로 보답하겠습니다. <br />
-                    감사합니다. :)
-                  </p>
-                )}
-              </ModalBody>
-              <ModalFooter>
-                <Button
-                  className="bg-black text-white"
-                  onPress={() => handleClose()}
-                >
-                  확인
-                </Button>
-              </ModalFooter>
-            </>
-          </ModalContent>
-        </NextModal>
       </div>
     </div>
   )
