@@ -1,1 +1,2 @@
-echo "pre-commit 훅 테스트 중입니다."
+pnpm lint
+pnpm typecheck
