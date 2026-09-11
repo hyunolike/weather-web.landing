@@ -1,3 +1,8 @@
+> [!NOTE]
+> 이 저장소는 [hyunolike/weather-web](https://github.com/hyunolike/weather-web) 의
+> `apps/landing` 으로 이전되었습니다.
+> 커밋 이력을 포함해 그대로 옮겨졌으며, 이후 개발과 배포는 해당 저장소에서 진행됩니다.
+
 # 날씨의 속삭임 🌤️
 
 > 서비스 `날씨의 속삭임` 렌딩페이지 입니다.
